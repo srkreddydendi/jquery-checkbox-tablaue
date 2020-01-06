@@ -18,9 +18,14 @@ $(document).ready(function() {
 
     $("#sort").click(function() {
       var sortColumns = getSelectedCheckBixes();
+      sortData(sortColumns);
     });
 
 });
+
+function sortData(sortColumns){
+    
+}
 
 function prepareCheckBoxes(headers){
   var headers = ['a','b','c']
