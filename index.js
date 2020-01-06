@@ -9,10 +9,10 @@ var gridOptions;
 $(document).ready(function() {
     var searchString;
     prepareCheckBoxes();
-    //initializeTableau(searchString);
+    initializeTableau(searchString);
     $("#search").click(function() {
         searchString = $("#search-box").val();
-       // initializeTableau(searchString);
+        initializeTableau(searchString);
 
     });
 
@@ -24,7 +24,7 @@ $(document).ready(function() {
 });
 
 function sortData(sortColumns){
-    
+
 }
 
 function prepareCheckBoxes(headers){
