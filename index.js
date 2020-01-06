@@ -8,6 +8,7 @@ var gridOptions;
 // createAgGrid();
 $(document).ready(function() {
     var searchString;
+    prepareCheckBoxes();
     //initializeTableau(searchString);
     $("#search").click(function() {
         searchString = $("#search-box").val();
@@ -15,12 +16,42 @@ $(document).ready(function() {
 
     });
 
+    $("#sort").click(function() {
+        getSelectedCheckBixes();
+    });
+
 });
 
 function prepareCheckBoxes(){
   var columns = ['a','b','c']
   columns.forEach(column =>{
-
+    var myDiv = document.getElementById("myDiv"); 
+              
+            // creating checkbox element 
+            var checkbox = document.createElement('input'); 
+              
+            // Assigning the attributes 
+            // to created checkbox 
+            checkbox.type = "checkbox"; 
+            checkbox.name = "name"; 
+            checkbox.value = column; 
+            checkbox.id = column; 
+              
+            // creating label for checkbox 
+            var label = document.createElement('label'); 
+              
+            // assigning attributes for  
+            // the created label tag  
+            label.htmlFor = "id"; 
+              
+            // appending the created text to  
+            // the created label tag  
+            label.appendChild(document.createTextNode(column)); 
+              
+            // appending the checkbox 
+            // and label to div 
+            myDiv.appendChild(checkbox); 
+            myDiv.appendChild(label); 
   });
 }
 
