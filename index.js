@@ -25,31 +25,21 @@ $(document).ready(function() {
 function prepareCheckBoxes(){
   var columns = ['a','b','c']
   columns.forEach(column =>{
-    var myDiv = document.getElementById("myDiv"); 
+    var myDiv = document.getElementById("checkbox-div"); 
               
             // creating checkbox element 
             var checkbox = document.createElement('input'); 
               
-            // Assigning the attributes 
-            // to created checkbox 
             checkbox.type = "checkbox"; 
-            checkbox.name = "name"; 
+            checkbox.name = "header"; 
             checkbox.value = column; 
             checkbox.id = column; 
-              
-            // creating label for checkbox 
             var label = document.createElement('label'); 
               
-            // assigning attributes for  
-            // the created label tag  
             label.htmlFor = "id"; 
               
-            // appending the created text to  
-            // the created label tag  
             label.appendChild(document.createTextNode(column)); 
               
-            // appending the checkbox 
-            // and label to div 
             myDiv.appendChild(checkbox); 
             myDiv.appendChild(label); 
   });
@@ -57,10 +47,10 @@ function prepareCheckBoxes(){
 
 function getSelectedCheckBixes(){
   var columns = [];
-            $.each($("input[name='sport']:checked"), function(){
+            $.each($("input[name='header']:checked"), function(){
                 columns.push($(this).val());
             });
-
+alert(JSON.stringify(columns));
 }
 function initializeTableau(searchString) {
     tableau.extensions.initializeAsync().then(function() {
