@@ -17,31 +17,31 @@ $(document).ready(function() {
     });
 
     $("#sort").click(function() {
-        getSelectedCheckBixes();
+      var sortColumns = getSelectedCheckBixes();
     });
 
 });
 
-function prepareCheckBoxes(){
-  var columns = ['a','b','c']
-  columns.forEach(column =>{
-    var myDiv = document.getElementById("checkbox-div"); 
+function prepareCheckBoxes(headers){
+  var headers = ['a','b','c']
+  headers.forEach(header =>{
+    var checkboxDiv = document.getElementById("checkbox-div"); 
               
             // creating checkbox element 
             var checkbox = document.createElement('input'); 
               
             checkbox.type = "checkbox"; 
             checkbox.name = "header"; 
-            checkbox.value = column; 
-            checkbox.id = column; 
+            checkbox.value = header; 
+            checkbox.id = header; 
             var label = document.createElement('label'); 
               
             label.htmlFor = "id"; 
               
-            label.appendChild(document.createTextNode(column)); 
+            label.appendChild(document.createTextNode(header)); 
               
-            myDiv.appendChild(checkbox); 
-            myDiv.appendChild(label); 
+            checkboxDiv.appendChild(checkbox); 
+            checkboxDiv.appendChild(label); 
   });
 }
 
@@ -50,7 +50,7 @@ function getSelectedCheckBixes(){
             $.each($("input[name='header']:checked"), function(){
                 columns.push($(this).val());
             });
-alert(JSON.stringify(columns));
+            return columns;
 }
 function initializeTableau(searchString) {
     tableau.extensions.initializeAsync().then(function() {
@@ -76,11 +76,12 @@ function prepareHeaders(objArr) {
 
 function prepareHeadersArr(objArr) {
     //alert(objArr)
-    var header = [];
+    var headers = [];
     objArr.forEach(function(obj) {
-        header.push(obj['_fieldName']);
+        headers.push(obj['_fieldName']);
     });
-    return header;
+    prepareCheckBoxes(headers);
+    return headers;
 }
 
 function convertToCSV(objArray) {
